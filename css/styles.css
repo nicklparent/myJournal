@@ -1,0 +1,38 @@
+.pg-main{
+    margin: 0 10vw;
+}
+
+.sign-in > div{
+    margin-bottom: 1%;
+}
+
+.register-frm{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.register-submit{
+    grid-column: 1 / span 2;
+}
+
+.error-message{
+    color: red;
+    border: 2px solid red;
+    background-color: maroon;
+    border-radius: 1rem;
+    padding: 4%;
+    /* text-shadow: 10rem; */
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+.login{
+    width: 30vw;
+}
