@@ -22,6 +22,7 @@
     background-color: maroon;
     border-radius: 1rem;
     padding: 4%;
+    text-align: center;
 }
 
 .dropdown-menu{
@@ -45,6 +46,7 @@
     padding: 1em ;
     width: 100%;
     background-color: #4dacff;
+    margin-bottom: 2em;
 }
 
 .entry-header{

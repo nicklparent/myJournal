@@ -17,7 +17,7 @@ if (!isset($_COOKIE['logged_in'])) {
             </div>
             <div class="d-flex ">
                 <button type="submit" class="btn-primary btn w-100 signIn-submit">Sign In</button>
-                <button class="reg-btn btn-primary btn w-100>Register</button>
+                <button class="btn-primary btn w-100" id="reg-btn">Register</button>
             </div>
         </form>';
 } else {
@@ -34,9 +34,14 @@ if (!isset($_COOKIE['logged_in'])) {
                         echo '
                         <div class="entry">
                             <div class="entry-header">
-                                <h5>' . $data[1] . '</h5>
-                                <p>|</p>
-                                <h5>' . $data[3] . '</h5>
+                                <h5 style="font-weight: 600;">' . $data[1] . '</h5>
+                                <div class="dropdown" >
+                                    <h6 style="color: #4b5257;" class="dropdown-toggle">' . $data[3] . '</h6>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="edit_entry.php">Edit</a></li>
+                                        <li><a class="dropdown-item" href="delete_entry.php">Delete</a></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="entry-body">
                                 <p>' . $data[2] . '</p>
