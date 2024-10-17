@@ -10,6 +10,16 @@
         header("Location: index.php", true, 302);
         die();
     }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $file = fopen("bd/entries.csv");
+        $rows = array();
+
+        while (($data = fgetcsv($file)) !== false){
+            $rows[] = $data;
+        }
+        fclose($file);
+    }
+
     require_once("includes/header.php");
 ?>
 
