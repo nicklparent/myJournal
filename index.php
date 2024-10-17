@@ -20,7 +20,8 @@ if (!isset($_COOKIE['logged_in'])) {
 } else {
     ?>
         <div>
-            <h1>Welcome <?php echo $_COOKIE['logged_in'];?></h1>
+            <h1 class="greeting">Welcome <?php echo $_COOKIE['logged_in'];?></h1>
+            <br>
         </div>
         <div>
             <?php
@@ -31,27 +32,17 @@ if (!isset($_COOKIE['logged_in'])) {
                         <div class="entry">
                             <div class="entry-header">
                                 <h5>' . $data[1] . '</h5>
-                                <p>' . $data[3] . '</p>
+                                <p>|</p>
+                                <h5>' . $data[3] . '</h5>
                             </div>
                             <div class="entry-body">
-                                
+                                <p>' . $data[2] . '</p>
                             </div>
                         </div>';
                     }
                 }
             ?>
         </div>
-
-
-    <div class="entry">
-        <div class="entry-header">
-            <h5></h5>
-        </div>
-        <div class="">
-
-        </div>
-    </div>
-
     <?php
 }
 require_once("includes/footer.php");

@@ -1,3 +1,4 @@
+
 .pg-main{
     margin: 0 10vw;
 }
@@ -21,7 +22,6 @@
     background-color: maroon;
     border-radius: 1rem;
     padding: 4%;
-    /* text-shadow: 10rem; */
 }
 
 .dropdown-menu{
@@ -35,4 +35,25 @@
 
 .login{
     width: 30vw;
+}
+
+.entry{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1em ;
+}
+
+.entry-header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin-bottom: 1.5em;
+}
+
+.greeting{
+    color: #07467c;
+    font-weight: 100;
+    font-family: 'Times New Roman', Times, serif;
 }
