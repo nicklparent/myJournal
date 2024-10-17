@@ -22,4 +22,5 @@ if (ini_get("session.use_cookies")) {
 
 // Finally, destroy the session.
 session_destroy();
+header("Location: index.php", true, 302);
 ?>

@@ -11,4 +11,5 @@
         <div><a href="add_entry.php" class="text-decoration-none border rounded-end-2 p-2">New Entry</a></div>
     </div>
 </footer>
+<script src="js/script.js"></script>
 </body>

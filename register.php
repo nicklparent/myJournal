@@ -1,12 +1,18 @@
 <?php
 
+function cleanInput($data){
+    $data = trim($data);
+    $data = htmlspecialchars($data);
+    return $data;  
+}
+
 if (isset($_COOKIE['logged_in'])){
     header("Location: index.php", true, 302);
     die();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $Name = $_POST['name-register'];
+    $Name = cleanInput($_POST['name-register']);
     $username = $_POST['username-register'];
     $password = $_POST['password-register'];
     $password_confirm = $_POST['password-confirm-register'];

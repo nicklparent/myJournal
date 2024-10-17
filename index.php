@@ -17,7 +17,7 @@ if (!isset($_COOKIE['logged_in'])) {
             </div>
             <div class="d-flex ">
                 <button type="submit" class="btn-primary btn w-100 signIn-submit">Sign In</button>
-                <button type="submit" class="btn-primary btn w-100>Register</button>
+                <button class="reg-btn btn-primary btn w-100>Register</button>
             </div>
         </form>';
 } else {
