@@ -26,9 +26,17 @@
         <label for="username-setting">UserName</label>
         <button type="submit" class="btn btn-primary">Update</button>
     </div>
+    
     <div class="form-floating setting-form">
         <input type="text" name="displayname-setting" id="displayname-setting" class="form-control"
-        value=<?php $_SESSION['display_name']?>>
+        value=<?php echo $_SESSION['display_name'];?>>
+        <label for="username-setting">Display Name</label>
+        <button type="submit" class="btn btn-primary">Set Name</button>
+    </div>
+
+    <div class="form-floating setting-form">
+        <input type="text" name="displayname-setting" id="displayname-setting" class="form-control"
+        value=<?php echo $_SESSION['display_name'];?>>
         <label for="username-setting">Display Name</label>
         <button type="submit" class="btn btn-primary">Set Name</button>
     </div>

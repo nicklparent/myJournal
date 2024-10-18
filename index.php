@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("includes/header.php");
+
 if (!isset($_COOKIE['logged_in'])) {
     echo '<h1 class="text-center">Sign In</h1>';
     if (isset($_GET['login_error'])) {
@@ -24,7 +25,7 @@ if (!isset($_COOKIE['logged_in'])) {
 } else {
     ?>
         <div>
-            <h1 class="greeting">Welcome <?php echo $_COOKIE['logged_in'];?></h1>
+            <h1 class="greeting">Welcome <?php echo $_SESSION['display_name'];?></h1>
             <br>
         </div>
         <a href="add_entry.php" class="entry-btn">+New Entry</a>
@@ -52,6 +53,7 @@ if (!isset($_COOKIE['logged_in'])) {
                         </div>';
                     }
                 }
+
             ?>
         </div>
         <script>
