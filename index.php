@@ -38,7 +38,7 @@ if (!isset($_COOKIE['logged_in'])) {
                                 <div class="dropdown" >
                                     <h6 style="color: #4b5257;" class="dropdown-toggle">' . $data[3] . '</h6>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="edit_entry.php" id="edit-btn">Edit</a></li>
+                                        <li><a class="dropdown-item" href="edit_entry.php?entry=' . $data[2] .'name=' . $data[0] . '" id="edit-btn">Edit</a></li>
                                         <li><a class="dropdown-item" href="delete_entry.php">Delete</a></li>
                                     </ul>
                                 </div>
