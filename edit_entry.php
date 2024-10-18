@@ -2,7 +2,7 @@
     function cleanInput($data){
         $data = trim($data);
         $data = htmlspecialchars($data);
-        $data = preg_replace('/\s+/', ' ', $data);
+        $data = preg_replace('/\s+/', '', $data);
         return $data;  
     }
     
@@ -20,19 +20,37 @@
     $date = '';
     $username = '';
 
-    $query = $_SERVER['QUERY_STRING'];
-    parse_str($query, $queryParse);
     while (($data = fgetcsv($file)) !== false){
         $rows[] = $data;
-        if ($data[2] === $queryParse['entry'] && $data[0] === $queryParse['name']){
+        if ($data[2] === $_COOKIE['edit_entry'] && $data[0] === $_COOKIE['logged_in']){
             $username = $data[0];
             $title = $data[1];
             $entry = $data[2];
             $date = $data[3];
         }
     }
+    fclose($file);
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $new_title = $_POST['title-in'];
+        $new_entry = $_POST['entry-input'];
 
+        for ($i = 0; $i < count($rows); $i++){
+            if ($rows[$i][2] === $_COOKIE['edit_entry'] && $rows[$i][0] === $_COOKIE['logged_in']){
+                $rows[$i][2] = $new_entry;
+                $rows[$i][1] = $new_title;
+            }
+        }
+
+        $file = fopen("db/entries.csv", "w");
+        foreach ($rows as $curr){
+            fputcsv($file, $curr);
+        }
+        fclose($file);
+        setcookie("edit_entry", "", time() - 1000);
+        header("Location: index.php", true, 302);
+        die();
+    }
     
     require_once("includes/header.php");
 ?>

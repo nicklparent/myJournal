@@ -43,6 +43,7 @@ $file = fopen("db/entries.csv", "w");
 foreach ($rows as $curr){
     fputcsv($file, $curr);
 }
+header()
 ?>
 <div class="entry">
     <div class="entry-header">

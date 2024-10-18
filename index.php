@@ -35,10 +35,11 @@ if (!isset($_COOKIE['logged_in'])) {
                         <div class="entry">
                             <div class="entry-header">
                                 <h5 style="font-weight: 600;">' . $data[1] . '</h5>
+                                <p>|</p>
                                 <div class="dropdown" >
                                     <h6 style="color: #4b5257;" class="dropdown-toggle">' . $data[3] . '</h6>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="edit_entry.php?entry=' . $data[2] .'name=' . $data[0] . '" id="edit-btn">Edit</a></li>
+                                        <li><button class="dropdown-item"' . $data[2] . '" id="edit-btn" onclick="setEditCookie(\'' . $data[2] . '\')">Edit</button></li>
                                         <li><a class="dropdown-item" href="delete_entry.php">Delete</a></li>
                                     </ul>
                                 </div>
@@ -51,6 +52,12 @@ if (!isset($_COOKIE['logged_in'])) {
                 }
             ?>
         </div>
+        <script>
+            function setEditCookie(content){
+                document.cookie = "edit_entry=" + encodeURIComponent(content) + "; path=/";
+                window.location.href = "edit_entry.php";
+            }
+        </script>
     <?php
 }
 require_once("includes/footer.php");
