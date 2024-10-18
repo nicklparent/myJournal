@@ -41,7 +41,7 @@ Boostrap header accessed october 7th 2024 from https://getbootstrap.com/docs/5.3
                 DROPDOWN;
               } else {
                 echo <<<DROPDOWN
-                  <li><a class='dropdown-item' href='includes/login.php'>Sign In</a></li>
+                  <li><a class='dropdown-item' href='index.php'>Sign In</a></li>
                   <li><a class='dropdown-item' href='register.php'>Register</a></li>
                 DROPDOWN;
               }
@@ -52,4 +52,4 @@ Boostrap header accessed october 7th 2024 from https://getbootstrap.com/docs/5.3
       </div>
     </div>
   </header>
-  <main class="pg-main d-flex justify-content-center align-items-center flex-column">
+  <main class="pg-main d-flex align-items-center flex-column">

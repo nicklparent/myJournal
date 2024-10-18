@@ -7,6 +7,7 @@ function cleanInput($data){
 }
 
 if (isset($_COOKIE['logged_in'])){
+    session_start();
     header("Location: index.php", true, 302);
     die();
 }
@@ -35,7 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         $file = fopen("db/users.csv", "a");
         fputcsv($file, array($username, password_hash($password, PASSWORD_DEFAULT), $Name, $securityQuestion, $securityAnswer));
         session_start();
-        setcookie("logged_in", $username, time() + 60 * 60 * 24 * 30);
+        $_SESSION['display_name'] = $username;
+        setcookie("logged_in", $username, time() + 60 * 60 * 24 * 30, '/');
         header("Location: index.php", true, 302);
         die();
     }
@@ -90,7 +92,7 @@ require_once("includes/header.php");
             <label for="security-question">Security Question</label>
         </div>
         <div class="form-floating">
-            <input type="password" name="security-Answer" class="form-control" required>
+            <input type="password" name="security-answer" class="form-control" required>
             <label for="security-question">Security Answer</label>
         </div>
     </div>

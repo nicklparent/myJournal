@@ -1,4 +1,5 @@
 <?php
+    session_start();
     function cleanInput($data){
         $data = trim($data);
         $data = htmlspecialchars($data);
@@ -22,6 +23,7 @@
             die();
         } else {
             header("Location: add_entry.php?invalid", true, 302);
+            die();
         }
         
     }

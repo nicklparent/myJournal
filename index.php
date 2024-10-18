@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("includes/header.php");
 if (!isset($_COOKIE['logged_in'])) {
     echo '<h1 class="text-center">Sign In</h1>';
@@ -17,7 +18,7 @@ if (!isset($_COOKIE['logged_in'])) {
             </div>
             <div class="d-flex ">
                 <button type="submit" class="btn-primary btn w-100 signIn-submit">Sign In</button>
-                <button class="btn-primary btn w-100" id="reg-btn">Register</button>
+                <a class="btn-primary btn w-100" id="reg-btn">Register</a>
             </div>
         </form>';
 } else {
@@ -26,6 +27,7 @@ if (!isset($_COOKIE['logged_in'])) {
             <h1 class="greeting">Welcome <?php echo $_COOKIE['logged_in'];?></h1>
             <br>
         </div>
+        <a href="add_entry.php" class="entry-btn">+New Entry</a>
         <div>
             <?php
                 $file = fopen("db/entries.csv", "r");

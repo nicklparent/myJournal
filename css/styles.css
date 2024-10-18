@@ -1,9 +1,11 @@
 body{
     background-color: grey;
+    
 }
 .pg-main{
     margin: 0 10vw;
     background-color: rgb(204, 195, 195);
+    height: 80vh;
 }
 
 .sign-in > div{
@@ -63,4 +65,30 @@ body{
     color: #07467c;
     font-weight: 100;
     font-family: 'Times New Roman', Times, serif;
+}
+
+.btn{
+    border: 1px solid black;
+    margin: 0 0.1em;
+}
+
+.entry-btn{
+    padding: 5% 8%;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 0.6em;
+    font-size: x-large;
+    color: black;
+    background-color: #b0a8a8;
+}
+
+.setting-form{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin-bottom: 1em;
+}
+
+.setting-form > * {
+    border: 1px solid black;
+    border-radius: 0.6em;
 }
