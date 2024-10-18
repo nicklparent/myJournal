@@ -1,5 +1,5 @@
 </main>
-<footer class="d-flex justify-content-between align-items-start py-3 my-4 border-top" id="pg-footer" style="background-color: #212529;">
+<footer class="d-flex justify-content-between align-items-start py-3 border-top" id="pg-footer" style="background-color: #212529;">
     <p class="p-2 m-2" style="color: white;">&copy; 2024; My Journal</p>
     <p class="p-2 m-2" style="color: white;">
         <?php

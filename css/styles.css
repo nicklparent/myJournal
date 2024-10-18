@@ -1,7 +1,9 @@
-
+body{
+    background-color: grey;
+}
 .pg-main{
     margin: 0 10vw;
-    background-color: grey;
+    background-color: rgb(204, 195, 195);
 }
 
 .sign-in > div{
