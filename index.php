@@ -8,7 +8,45 @@ if (!isset($_COOKIE['logged_in'])) {
         echo "<h5 class='error-message'>UserName or Password Wrong</h5><p class='text-center'><a href='register.php'>Register</a></p>";
     }
 
-    
+    if (isset($_GET['userfound']) && isset($_POST['security-in'])){
+        setcookie("logged_in", $_GET['userfound'], time() + 87987);
+        header("Location: index.php", true, 302);
+        die();
+    }
+    if (isset($_GET['forgot_password']) && isset($_POST['username-forgot'])){
+        $file = fopen("db/users.csv", "r");
+        $securityQuestion = '';
+        $securityAnswer = '';
+        while (($data = fgetcsv($file)) !== false){
+            if ($data[0] === $_POST['username-forgot']){
+                $securityQuestion = $data[3];
+                $securityAnswer = $data[4];
+                break;
+            }
+        }
+        ?>
+            <form action="index.php?forgot_password&userfound=<?php echo $data[0];?>" method="POST">
+                <div class="form-floating">
+                    <p class="form-control">Security Quesstion: <?php echo $securityQuestion;?>?</p>
+                </div>
+                <div class="form-floating">
+                    <input type="text" name="security-in" id="security-in" class="form-control">
+                    <label for="security-in">Security Answer</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        <?php
+    } else if (isset($_GET['forgot_password']) && (!isset($_POST['username-forgot']))){
+        ?>
+            <form action="index.php?forgot_password" method="POST">
+                <div class="form-floating">
+                    <input type="text" name="username-forgot" id="username-forgot" class="form-control">
+                    <label for="username-forgot">Enter User Name</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100"> Submit</button>
+            </form>
+        <?php
+    } else {
     echo '
         <form action="includes/login.php" method="POST" class="form-signin sign-in register-frm m-3 login d-flex flex-column">
             <div class="form-floating">
@@ -25,7 +63,7 @@ if (!isset($_COOKIE['logged_in'])) {
             </div>
             <a href="index.php?forgot_password" class="btn" style="background-color: white;">Forgot Password</a>
         </form>';
-    
+    }
 } else {
 
     ?>
