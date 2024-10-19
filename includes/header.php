@@ -30,13 +30,14 @@ Boostrap header accessed october 7th 2024 from https://getbootstrap.com/docs/5.3
 
         <div class="dropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <button type="button" class="btn btn-primary dropdown-toggle"><img class="rounded-circle" src="icons/profile.png" alt="profile" width="40" height="25">
-          Account
+          <?php echo (isset($_SESSION['display_name'])) ? $_SESSION['display_name']: "Login";?>
           </button>
           <ul class="dropdown-menu">
             <?php 
               if (isset($_COOKIE['logged_in'])){
+                $session = (isset($_SESSION['display_name'])) ? $_SESSION['display_name']: "Login";
                 echo <<<DROPDOWN
-                  <li><a class='dropdown-item' href='account_settings.php'>{$_COOKIE['logged_in']}</a></li>
+                  <li><a class='dropdown-item' href='account_settings.php'>{$session}</a></li>
                   <li><a class='dropdown-item' href='includes/logout.php'>Logout</a></li>
                 DROPDOWN;
               } else {

@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $password = $_POST['password-register'];
     $password_confirm = $_POST['password-confirm-register'];
     $securityQuestion = $_POST['security-question'];
-    $securityAnswer = $POST['security-answer'];
+    $securityAnswer = $_POST['security-answer'];
 
     $file = fopen("db/users.csv", "r");
     while (($data = fgetcsv($file)) !== false){
