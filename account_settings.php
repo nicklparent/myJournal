@@ -19,6 +19,25 @@
         }
     }
     fclose($file);
+    if (isset($_POST['new-password']) && isset($_POST['confirm-password']) && !isset($_POST['old-password'])){
+        $found = false;
+        for ($i = 0; $i < count($rows); $i++){
+            if ($rows[$i][0] === $userinfo[0]){
+                if ($_POST["new-password"] === $_POST["confirm-password"]){
+                    $rows[$i][1] = password_hash($_POST["new-password"], PASSWORD_DEFAULT);
+                    $found = true;
+                }
+            }
+        }
+        if ($found){
+            $file = fopen("db/users.csv", "w");
+            foreach ($rows as $curr){
+                fputcsv($file, $curr);
+            }
+            header("Location: includes/logout.php", true, 302);
+            die();
+        }
+    }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username-setting'])){
         $file = fopen("db/users.csv", "r");
@@ -50,12 +69,12 @@
         die();
     }
 
-    if (isset($_GET['reset_password']) && $_SERVER['REQUEST_METHOD'] === 'POST'){
+    if (isset($_GET['reset_password']) && $_SERVER['REQUEST_METHOD'] === 'POST' ){
         
         $found = false;
         for ($i = 0; $i < count($rows); $i++){
 
-            if ($rows[$i][0] === $userinfo[0] && password_verify($_POST['old-password'], $rows[$i][1])){
+            if ($rows[$i][0] === $userinfo[0] && password_verify(isset($_POST['old-password']) ? $_POST["old-password"]: "", $rows[$i][1])){
                 if ($_POST['new-password'] === $_POST['confirm-password']){
                     $rows[$i][1] = password_hash($_POST['new-password'], PASSWORD_DEFAULT);
                     $found = true;
@@ -72,20 +91,26 @@
                 fputcsv($file, $curr);
             }
             fclose($file);
-            header("Location: account_settings.php", true, 302);
+            setcookie("logged_in", "", time() - 1000, "/");
+            header("Location: index.php", true, 302);
             die();
         }
     }
     
-    
-    
+
     if (isset($_GET['reset_password'])){
         ?>
             <form action="account_settings.php?reset_password" method="POST" class="flex-d w-50">
-                <div class="form-floating">
-                    <input type="password" name="old-password" id="old-password" class="form-control">
-                    <label for="password">Old password</label>
-                </div>
+                <?php 
+                    if (!isset($_SESSION['password'])){
+                        ?>
+                        <div class="form-floating">
+                            <input type="password" name="old-password" id="old-password" class="form-control">
+                            <label for="password">Old password</label>
+                        </div>
+                        <?php
+                    }
+                ?>
                 <div class="form-floating">
                     <input type="password" name="new-password" id="new-password" class="form-control">
                     <label for="password">New password</label> 
@@ -101,7 +126,7 @@
     } else {
     
 ?>
-<h1><?php echo $_SESSION['display_name'];?> Settings</h1>
+<h1><?php echo (isset($_SESSION['display_name']) ? $_SESSION['display_name'] : "Login");?> Settings</h1>
 <form action="account_settings.php" method="POST" class="flex-d">
     <div class="form-floating setting-form">
         <input type="text" name="username-setting" id="username-setting" class="form-control"
@@ -112,7 +137,7 @@
 
     <div class="form-floating setting-form">
         <input type="text" name="displayname-setting" id="displayname-setting" class="form-control"
-        value=<?php echo $_SESSION['display_name'];?>>
+        value=<?php echo (isset($_SESSION['display_name']) ? $_SESSION['display_name'] : "Login");?>>
         <label for="username-setting">Display Name</label>
         <button type="submit" class="btn btn-primary">Set Name</button>
     </div>

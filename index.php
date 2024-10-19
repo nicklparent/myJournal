@@ -9,8 +9,9 @@ if (!isset($_COOKIE['logged_in'])) {
     }
 
     if (isset($_GET['userfound']) && isset($_POST['security-in'])){
-        setcookie("logged_in", $_GET['userfound'], time() + 87987);
-        header("Location: index.php", true, 302);
+        setcookie("logged_in", $_GET['userfound'], time() + 60 * 60 * 24 * 30, "/");
+        $_SESSION['password'] = "reset";
+        header("Location: account_settings.php?reset_password", true, 302);
         die();
     }
     if (isset($_GET['forgot_password']) && isset($_POST['username-forgot'])){
