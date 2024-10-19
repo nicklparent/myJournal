@@ -71,7 +71,7 @@
             }
         ?>
         <div class="form-floating">
-            <input type="text" name="title-in" id="title-in" class="form-control w-50" value="<?php echo $title;?>">
+            <input type="text" name="title-in" id="title-in" class="form-control w-50" value="<?php echo $title;?>" required>
             <label for="title-in">Title</label>
         </div>
         <br>

@@ -45,12 +45,12 @@
             }
         ?>
         <div class="form-floating">
-            <input type="text" name="title-in" id="title-in" class="form-control w-50">
+            <input type="text" name="title-in" id="title-in" class="form-control w-50" required>
             <label for="title-in">Title</label>
         </div>
         <br>
         <div class="entry-body form-floating">
-            <textarea name="entry-input" class="form-control entry-input" style="height: 30vh; white-space: pre-wrap;"></textarea>
+            <textarea name="entry-input" class="form-control entry-input" style="height: 30vh; white-space: pre-wrap;" required></textarea>
             <label for="entry-input">Journal Entry</label>
         </div>
         <button type="submit" class="btn btn-primary w-100">Submit</button>
